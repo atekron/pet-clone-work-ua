@@ -4,11 +4,15 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
+const vacancies = require("./routes/vacancies");
+
 const app = express();
 
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
+
+app.use("/vacancies", vacancies);
 
 app.get("/", (req, res) => res.send("work.ua clone"));
 
