@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const vacancies = require("./routes/vacancies");
+const vacancies = require("./api/v1/vacancies");
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/vacancies", vacancies);
 
-app.get("/", (req, res) => res.send("work.ua clone"));
+app.get("/", (req, res) => res.send("[work.ua clone home]"));
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
