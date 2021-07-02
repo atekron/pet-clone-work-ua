@@ -1,12 +1,19 @@
 const get = async (data) => {
   const vacancies = await data.get();
-  console.log(vacancies.push("hello from .."));
   return vacancies;
 };
-const getById = () => {};
+const getById = async (id, data) => {
+  const vacancy = await data.getById(id);
+  return vacancy;
+};
+
+const deleteById = async (id, data) => {
+  const result = await data.deleteById(id);
+  return result;
+};
+
 const create = () => {};
 const updateById = () => {};
-const deleteById = () => {};
 
 module.exports = {
   get,
