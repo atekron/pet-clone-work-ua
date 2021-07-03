@@ -8,7 +8,7 @@ const vacancies = require("./api/v1/vacancies");
 
 const app = express();
 
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 

@@ -1,10 +1,11 @@
 const get = async (data) => {
   const vacancies = await data.get();
-  return vacancies;
+  return vacancies.rows;
 };
+
 const getById = async (id, data) => {
   const vacancy = await data.getById(id);
-  return vacancy;
+  return vacancy.rows[0];
 };
 
 const deleteById = async (id, data) => {
@@ -12,8 +13,15 @@ const deleteById = async (id, data) => {
   return result;
 };
 
-const create = () => {};
-const updateById = () => {};
+const create = async (vacancy, data) => {
+  const result = await data.create(vacancy);
+  return result.rows[0];
+};
+
+const updateById = async (id, vacancy, data) => {
+  const result = await data.update(id, vacancy);
+  return result.rows[0];
+};
 
 module.exports = {
   get,

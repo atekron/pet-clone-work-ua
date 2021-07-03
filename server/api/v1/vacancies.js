@@ -20,7 +20,18 @@ router.delete("/:id", async (req, res) => {
   const result = await service.deleteById(id, data);
   res.status(200).send(result);
 });
-router.patch("/:id", () => service.updateById());
-router.post("/", () => service.create());
+
+router.post("/", async (req, res) => {
+  const vacancy = req.body;
+  const result = await service.create(vacancy, data);
+  res.status(200).send(result);
+});
+
+router.put("/:id", async (req, res) => {
+  const vacancy = req.body;
+  const id = req.params.id;
+  const result = await service.updateById(id, vacancy, data);
+  res.status(200).send(result);
+});
 
 module.exports = router;
