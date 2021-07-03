@@ -1,9 +1,16 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import JobsList from "./pages/JobsList";
+
 function App() {
   return (
     <>
-      <div className="bg-blue-900 h-screen">
-        <h1 className="text-white text-center text-5xl">React hi!</h1>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/jobs/:location" component={JobsList} />
+        </Switch>
+      </Router>
     </>
   );
 }
