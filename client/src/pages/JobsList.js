@@ -1,14 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {
   useAddVacancyMutation,
+  useDeleteVacancyMutation,
   useGetVacancyByIdQuery,
 } from "../redux/services/vacancies";
 
 const JobsList = () => {
   const { location } = useParams();
+  const history = useHistory();
   const { data, isLoading, error } = useGetVacancyByIdQuery(location);
-  const [addVacancy] = useAddVacancyMutation();
+  const [addNewVacancy] = useAddVacancyMutation();
+  const [deleteVacancy] = useDeleteVacancyMutation();
 
   const newVacancy = {
     position: "Vacancy From React",
@@ -20,9 +23,14 @@ const JobsList = () => {
     job_description: "we need front-end developer",
   };
 
-  const createHandler = () => {
-    addVacancy(newVacancy);
-    console.log("new vacancy added");
+  const createHandler = async () => {
+    const addResult = await addNewVacancy(newVacancy);
+    console.log(addResult.data.id);
+    history.push(`/jobs/${addResult.data.id}`);
+  };
+
+  const deleteHandler = async () => {
+    await deleteVacancy(720);
   };
 
   if (isLoading) {
@@ -31,7 +39,9 @@ const JobsList = () => {
   if (error) {
     return <div>OMG!, oh NO! an error occured!!!</div>;
   }
-  return (
+  return !data ? (
+    "No vacancy with such id"
+  ) : (
     <div className="flex flex-col max-w-screen-sm mx-auto mt-10 p-5 text-lg">
       <h1 className="text-3xl">Hello {location || "Ukraine"}!</h1>
       <div className="mb-10" key={data.id}>
@@ -46,10 +56,16 @@ const JobsList = () => {
         <p>{data.job_description}</p>
       </div>
       <button
-        className="bg-blue-500 p-5 rounded-lg text-xl text-white"
+        className="bg-blue-500 p-5 rounded-lg text-xl text-white mb-5"
         onClick={createHandler}
       >
-        Create Post
+        Create Vacancy
+      </button>
+      <button
+        className="bg-red-500 p-5 rounded-lg text-xl text-white"
+        onClick={deleteHandler}
+      >
+        Delete Vacancy
       </button>
     </div>
   );
