@@ -7,7 +7,42 @@ export const vacanciesApi = createApi({
     getVacancyById: builder.query({
       query: (id) => `/${id}`,
     }),
+    getAllVacancies: builder.query({
+      query: () => "/",
+    }),
+    addVacancy: builder.mutation({
+      query(body) {
+        return {
+          url: `/`,
+          method: "POST",
+          body,
+        };
+      },
+    }),
+    updateVacancy: builder.mutation({
+      query(id, body) {
+        return {
+          url: `/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+    }),
+    deleteVacancy: builder.mutation({
+      query(id) {
+        return {
+          url: `/${id}`,
+          method: "DELETE",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetVacancyByIdQuery } = vacanciesApi;
+export const {
+  useGetVacancyByIdQuery,
+  useGetAllVacanciesQuery,
+  useAddVacancyMutation,
+  useUpdateVacancyMutation,
+  useDeleteVacancyMutation,
+} = vacanciesApi;
