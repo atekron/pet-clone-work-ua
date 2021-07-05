@@ -1,11 +1,19 @@
 const get = async (data) => {
   const vacancies = await data.get();
-  return vacancies.rows;
+  return {
+    status: "success",
+    results: vacancies.rows.length,
+    data: vacancies.rows,
+  };
 };
 
 const getById = async (id, data) => {
   const vacancy = await data.getById(id);
-  return vacancy.rows[0];
+
+  return {
+    status: vacancy ? "success" : "not found",
+    data: vacancy ? vacancy.rows[0] : null,
+  };
 };
 
 const deleteById = async (id, data) => {

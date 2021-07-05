@@ -39,21 +39,22 @@ const JobsList = () => {
   if (error) {
     return <div>OMG!, oh NO! an error occured!!!</div>;
   }
-  return !data ? (
+  return data.data === null ? (
     "No vacancy with such id"
   ) : (
     <div className="flex flex-col max-w-screen-sm mx-auto mt-10 p-5 text-lg">
       <h1 className="text-3xl">Hello {location || "Ukraine"}!</h1>
-      <div className="mb-10" key={data.id}>
-        <h2>{data.position}</h2>
-        <p>{data.created.slice(0, 10)}</p>
+      <div className="mb-10" key={data.data.id}>
+        <h2>{data.data.position}</h2>
+        <p>{data.data.created.slice(0, 10)}</p>
         <p>
-          <span>{data.salary_min}</span> - <span>{data.salary_max}</span>
+          <span>{data.data.salary_min}</span> -{" "}
+          <span>{data.data.salary_max}</span>
         </p>
-        <p>{data.employer}</p>
-        <p>{data.job_location}</p>
-        <p>{data.tags}</p>
-        <p>{data.job_description}</p>
+        <p>{data.data.employer}</p>
+        <p>{data.data.job_location}</p>
+        <p>{data.data.tags}</p>
+        <p>{data.data.job_description}</p>
       </div>
       <button
         className="bg-blue-500 p-5 rounded-lg text-xl text-white mb-5"

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import MainHome from "../layout/MainHome";
 
 const HomePage = () => {
+  const headline = "Ukraine's #1 job site";
+  useEffect(() => {
+    document.title = headline;
+  }, []);
+
   return (
     <>
-      <Header homepage={true} />
+      <Header homepage={true} headline={headline} />
       <MainHome />
       <Footer />
     </>
