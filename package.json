@@ -1,0 +1,28 @@
+{
+  "name": "pet-clone-work-ua",
+  "version": "1.0.0",
+  "description": "clone of work.ua",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:backend": "cd server && npm install",
+    "install:frontend": "cd client && npm install",
+    "install:all": "npm install && npm run install:backend && npm run install:frontend",
+    "start:backend": "cd server && npm run start",
+    "start:frontend": "cd client && yarn start",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atekron/pet-clone-work-ua.git"
+  },
+  "author": "Michael Kret",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atekron/pet-clone-work-ua/issues"
+  },
+  "homepage": "https://github.com/atekron/pet-clone-work-ua#readme",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}

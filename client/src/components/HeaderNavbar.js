@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const HeaderNavbar = () => {
   return (
-    <div className="pb-5 border-b-2 border-opacity-25">
-      <div className="flex justify-end">
+    <div className="">
+      <div className="flex justify-end opacity-80 text-lg">
         <select
-          className="bg-transparent mr-5 text-white"
+          className="bg-transparent mr-5 text-white cursor-pointer"
           name="language"
           id="lang"
           defaultValue="eng"
@@ -23,7 +23,7 @@ const HeaderNavbar = () => {
           </option>
         </select>
         <div>
-          <p className="flex items-center">
+          <p className="flex items-center cursor-pointer">
             <span>For Employers</span>
             <span>
               <svg
@@ -42,19 +42,28 @@ const HeaderNavbar = () => {
           </p>
         </div>
       </div>
-      <div className="flex items-center justify-between my-5">
+      <div className="flex items-baseline justify-between my-5 border-b-2 border-opacity-25">
         <Logo />
-        <nav className="flex items-center">
-          <Link className="ml-5" to="/jobs">
+        <nav className="flex items-end text-2xl font-bold">
+          <Link
+            className="px-5 pb-10 border-transparent hover:border-red-500 border-b-4"
+            to="/jobs"
+          >
             Find jobs
           </Link>
-          <Link className="ml-5" to="/">
+          <Link
+            className="px-5 pb-10 border-transparent hover:border-red-500 border-b-4"
+            to="/"
+          >
             Post resume
           </Link>
-          <Link className="ml-5" to="/">
+          <Link
+            className="px-5 pb-10 border-transparent hover:border-red-500 border-b-4"
+            to="/"
+          >
             My dashboard
           </Link>
-          <div className="ml-5 inline-block">
+          <div className="px-5 pb-10 inline-block border-transparent hover:border-red-500 border-b-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 "
